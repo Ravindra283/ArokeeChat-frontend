@@ -16,32 +16,6 @@ export class ChatAppComponent implements AfterViewChecked {
 
   chatContacts: any;
   messageHistory: any = [];
-  // = [
-  //   {
-  //     timestamp: '10:10 AM, Today',
-  //     sender: 'Olia',
-  //     text: 'Hi Vincent, how are you? How is the project coming along?',
-  //     isReceiver: false
-  //   },
-  //   {
-  //     timestamp: '10:12 AM, Today',
-  //     sender: 'Vincent',
-  //     text: 'Are we meeting today? Project has been already finished and I have results to show you.',
-  //     isReceiver: true
-  //   },
-  //   {
-  //     timestamp: '10:14 AM, Today',
-  //     sender: 'Olia',
-  //     text: 'Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?',
-  //     isReceiver: false
-  //   },
-  //   {
-  //     timestamp: '10:20 AM, Today',
-  //     sender: 'Vincent',
-  //     text: 'Actually everything was fine. Im very excited to show this to our team.',
-  //     isReceiver: true
-  //   }
-  // ];
   showChat: boolean = false;
   userContact: any;
   newMessage!: string;
@@ -93,7 +67,6 @@ export class ChatAppComponent implements AfterViewChecked {
       if (this.currentUser._id != message.sender.userId) {
         this.messageHistory.push(
           {
-            // timestamp: '10:20 AM, Today',
             sender: message.sender.name,
             text: message.text,
             isReceiver: false
@@ -102,8 +75,6 @@ export class ChatAppComponent implements AfterViewChecked {
     })
 
     this.messageService.getActiveUser().subscribe((users: any) => {
-      // this.messageList.push(message);
-      console.log('active users', users)
       this.chatContacts.map((chatContact: any) => {
         if (users.some((user: any) => user.userId === chatContact._id)) {
           chatContact.status = 'Online'
@@ -116,7 +87,6 @@ export class ChatAppComponent implements AfterViewChecked {
   }
 
   sendMessage() {
-    console.log('new message', this.model.msg)
     if (this.newMessage) {
       const message = {
         sender: {
@@ -134,7 +104,6 @@ export class ChatAppComponent implements AfterViewChecked {
 
       this.messageHistory.push(
         {
-          timestamp: '10:20 AM, Today',
           sender: this.currentUser.name,
           text: this.newMessage,
           isReceiver: this.receiverData.isReceiver

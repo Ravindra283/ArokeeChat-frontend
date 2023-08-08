@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["chat"]);
       }
     }, (error) => {
-      console.log('error', error)
       alert(error.error.message)
+      console.log('error', error)
     });
   }
 
@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["chat"]);
       }
     }, (error) => {
+      alert(error.error.message)
       console.log('error', error)
     });
   }
