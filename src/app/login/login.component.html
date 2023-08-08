@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="auth-header">
+    <h1>Arokee Chat</h1>
+  </div>
+
+  <div class="auth-toggle">
+    <button (click)="showLoginForm = true" [class.active]="showLoginForm">Login</button>
+    <button (click)="showLoginForm = false" [class.active]="!showLoginForm">Sign Up</button>
+  </div>
+
+  <div class="auth-form" [ngClass]="{ 'login-form': showLoginForm, 'signup-form': !showLoginForm }">
+    <h2>{{ showLoginForm ? 'Login' : 'Sign Up' }}</h2>
+    <form *ngIf="showLoginForm" (ngSubmit)="onLoginSubmit()">
+      <label for="username">Email</label>
+      <input type="text" id="username" name="username" [(ngModel)]="loginEmail" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="loginPassword" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <form *ngIf="!showLoginForm" (ngSubmit)="onSignupSubmit()">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" [(ngModel)]="signupName" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="signupEmail" required>
+
+      <!-- <label for="image">Profile Image URL</label>
+      <input type="text" id="image" name="image" [(ngModel)]="signupImage" required> -->
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="signupPassword" required>
+
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>

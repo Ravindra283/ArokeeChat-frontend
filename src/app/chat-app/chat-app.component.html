@@ -1,0 +1,206 @@
+<!-- <div class="form-group container">
+  <ul id="listOfMessages">
+      <li class="singleMessage" *ngFor="let message of messageList">
+          {{message}}
+      </li>
+  </ul>
+
+  <form (ngSubmit)="onSubmit()" action=""> 
+      <div class="form-group mb-3 fixed-bottom">
+          <input  class="form-control input" type="text" autocomplete="off" required 
+          [(ngModel)]="model.msg" name="msg"
+          />
+          <button type="submit" class="btn btn-outline-secondary button-css" >Send Message</button>
+      </div>
+  </form>
+</div> -->
+
+
+<!-- <div>
+    <div class="sidebar"> -->
+
+
+
+      <!-- <input type="text" [(ngModel)]="findUserEmail" (input)="findUser(findUserEmail)" placeholder="Type User Email">
+      <button (click)="findUser(findUserEmail)">Search</button>
+      <span
+      [class.selected]='docId.name === currentDoc'
+      *ngFor='let docId of chatContacts'
+      (click)="loadChat(docId)"
+      >
+        {{ docId.name }}
+      </span> -->
+
+
+
+
+      <!-- <div class="people-list" id="people-list">
+        <div class="search">
+          <input type="text" placeholder="search" />
+          <i class="fa fa-search"></i>
+        </div>
+        <ul class="list" >
+          <div *ngFor="let userContact of chatContacts">
+          <li class="clearfix" (click)="initiateChat(userContact)">
+            <img src={{userContact.image}} alt="avatar" />
+            <div class="about">
+              <div class="name">{{userContact.name}}</div>
+              <div class="status">
+                <i class="fa fa-circle online"></i> {{userContact.status}}
+              </div>
+            </div>
+          </li>
+        </div>
+        </ul>
+      </div>
+    </div>
+    <div></div>
+    <div class="container"> -->
+
+
+
+      <!-- <div class="topnav">
+        <a  class="navtext">{{receiverName}}</a>
+    </div>
+    <div class="input-area">
+      <input type="text" id="messageInput" placeholder="Type your message...">
+      <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i> Send</button>
+    </div> -->
+
+
+
+    <!-- <div *ngIf="showChat" class="chat">
+      <div class="chat-header clearfix">
+        <img src={{userContact.image}} alt="avatar" />
+        
+        <div class="chat-about">
+          <div class="chat-with">Chat with {{userContact.name}}</div>
+          <div class="chat-num-messages">already 1 902 messages</div>
+        </div>
+        <i class="fa fa-star"></i>
+      </div> end chat-header -->
+      
+      <!-- <div class="chat-history">
+        <ul>
+          <div *ngFor="let message of messageHistory">
+            <div *ngIf="message.isReceiver; else sender">
+              <li class="clearfix">
+                <div class="message-data align-right">
+                  <span class="message-data-time" >{{message.timestamp}}</span> &nbsp; &nbsp;
+                  <span class="message-data-name" >{{message.sender}}</span> <i class="fa fa-circle me"></i>
+                </div>
+                <div class="message other-message float-right">
+                  {{message.text}}
+                </div>
+              </li>
+        </div>
+        <ng-template #sender>
+          <li>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> {{message.sender}}</span>
+              <span class="message-data-time">{{message.timestamp}}</span>
+            </div>
+            <div class="message my-message">
+              {{message.text}}
+            </div>
+          </li>
+        </ng-template>
+        </div>
+          
+          <li>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+              <span class="message-data-time">10:31 AM, Today</span>
+            </div>
+            <i class="fa fa-circle online"></i>
+            <i class="fa fa-circle online" style="color: #AED2A6"></i>
+            <i class="fa fa-circle online" style="color:#DAE9DA"></i>
+          </li>
+          
+        </ul>
+        
+      </div> end chat-history -->
+      
+      <!-- <div class="chat-message clearfix">
+        <textarea name="message-to-send" [(ngModel)]="newMessage" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
+                
+        <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+        <i class="fa fa-file-image-o"></i>
+        
+        <button (click)="sendMessage()">Send</button>
+    
+      </div>
+    </div>
+    
+    </div> -->
+
+
+
+    <div class="message-app">
+      <div class="sidebar">
+        <div class="user-profile">
+          <div class="user-avatar">
+            <img src="/assets/profilepic.webp" alt="User Avatar">
+          </div>
+          <div class="user-details">
+            <p class="username">{{currentUser.name}}</p>
+            <p class="status">Online</p>
+          </div>
+        </div>
+        <div class="user-list">
+          <!-- User list goes here -->
+          <div *ngFor='let chatContact of chatContacts'>
+            <div class="user" (click)="initiateChat(chatContact)">
+              <div class="user-avatar">
+                <img src="/assets/images.png" alt="User Avatar">
+              </div>
+              <p class="username">{{chatContact.name}}</p>
+              <p class="status">{{chatContact.status || 'Offline'}}</p>  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chat" *ngIf="showChat">
+        <div class="chat-header">
+          <div class="contact-info">
+            <div class="user-avatar">
+              <img src="/assets/images.png" alt="User Avatar">
+            </div>
+            <div class="user-details">
+              <p class="username">{{chattingWith.name}}</p>
+              <p class="status">{{chattingWith.status}}</p>
+            </div>
+          </div>
+          <!-- <button class="call-button">
+            <i class="fas fa-phone-alt"></i>
+          </button> -->
+        </div>
+        <div #chatContainer class="chat-messages">
+          <!-- Chat messages go here -->
+          <div class="chat-box" *ngFor='let message of messageHistory'>
+            <!-- <div *ngIf="message.isReceiver"> -->
+              <div *ngIf="message.isReceiver" class="message outgoing">
+                <p>{{message.text}}</p>
+                <!-- <span class="timestamp">11:30 AM</span> -->
+              </div>
+            <!-- </div> -->
+            <div *ngIf="!message.isReceiver" class="message incoming">
+              <p>{{message.text}}</p>
+              <!-- <span class="timestamp">11:35 AM</span> -->
+            </div>
+          </div>
+        </div>
+        <div class="chat-input">
+          <div class="input-container">
+            <input (keyup.enter)="sendMessage()" [(ngModel)]="newMessage" type="text" placeholder="Type a message...">
+            <label for="fileInput" class="file-upload-label">
+              <i class="fas fa-paperclip"></i>
+            </label>
+            <input disabled type="file" id="fileInput" (change)="sendMessage()">
+          </div>
+          <button (click)="sendMessage()" class="send-button">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>

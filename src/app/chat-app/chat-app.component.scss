@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+
+.message-app {
+  display: flex;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.sidebar {
+  flex: 1;
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px;
+  overflow-y: auto;
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    .user-avatar {
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .user-details {
+      .username {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .status {
+        font-size: 14px;
+        color: #f0f0f0;
+      }
+    }
+  }
+
+  .user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      background-color: rgba(255, 255, 255, 0.1);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .user-avatar {
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+
+      .user-info {
+        .username {
+          font-size: 16px;
+          font-weight: 500;
+        }
+
+        .status {
+          font-size: 14px;
+          color: #f0f0f0;
+        }
+      }
+    }
+  }
+}
+
+.chat {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+
+  .contact-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .user-avatar {
+    margin-right: 10px;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  }
+
+  .user-details {
+    .username {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .status {
+      font-size: 12px;
+      color: #f0f0f0;
+    }
+  }
+
+  .call-button {
+    padding: 8px;
+    background-color: #fff;
+    color: #007bff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .chat-box {
+    display: flex;
+    flex-direction: column;
+
+    &.outgoing {
+      align-self: flex-end;
+
+      .message {
+        background-color: #007bff;
+        color: #fff;
+        align-self: flex-end;
+      }
+    }
+
+    &.incoming {
+      align-self: flex-start;
+
+      .message {
+        background-color: #f0f0f0;
+        color: #333;
+        align-self: flex-start;
+      }
+    }
+
+    .message {
+      max-width: 70%;
+      padding: 12px 15px;
+      border-radius: 10px;
+      font-size: 16px;
+      line-height: 1.4;
+      position: relative;
+
+      .timestamp {
+        color: #999;
+        position: absolute;
+        bottom: -20px;
+        right: 5px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.chat-box{
+  display: block;
+}
+.message {
+  max-width: 70%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 1.4;
+  position: relative;
+
+  &.outgoing {
+    background-color: #007bff;
+    color: #fff;
+    align-self: flex-end;
+
+    .timestamp {
+      color: #f0f0f0;
+      position: absolute;
+      bottom: -20px;
+      right: 5px;
+      font-size: 12px;
+    }
+  }
+
+  &.incoming {
+    background-color: #f0f0f0;
+    color: #333;
+    align-self: flex-start;
+
+    .timestamp {
+      color: #999;
+      position: absolute;
+      bottom: -20px;
+      left: 5px;
+      font-size: 12px;
+    }
+  }
+}
+
+// .chat-input {
+//   display: flex;
+//   align-items: center;
+//   padding: 10px;
+//   border-top: 1px solid #ccc;
+
+//   input {
+//     flex: 1;
+//     padding: 10px;
+//     border: none;
+//     border-radius: 50px;
+//     margin-right: 10px;
+//     font-size: 16px;
+//     transition: background-color 0.3s;
+
+//     &:focus {
+//       outline: none;
+//       background-color: #f0f0f0;
+//     }
+//   }
+
+//   .send-button {
+//     padding: 10px;
+//     background-color: #007bff;
+//     color: #fff;
+//     border: none;
+//     border-radius: 50%;
+//     cursor: pointer;
+//     font-size: 20px;
+//     transition: background-color 0.3s;
+
+//     &:hover {
+//       background-color: #0056b3;
+//     }
+//   }
+// }
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+
+  .input-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 10px;
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+
+      &:focus {
+        outline: none;
+        background-color: #f0f0f0;
+      }
+    }
+
+    input[type="file"] {
+      display: none; /* Hide the file input */
+    }
+
+    .file-upload-label {
+      cursor: pointer;
+      color: #007bff;
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      background-color: #f0f0f0;
+      border-radius: 50%;
+
+      i {
+        font-size: 20px;
+      }
+
+      &:hover {
+        background-color: #dcdcdc;
+      }
+    }
+  }
+
+  .send-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
